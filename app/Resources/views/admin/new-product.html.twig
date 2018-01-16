@@ -1,0 +1,70 @@
+<html>
+<head>
+    <title>Dodawanie produktu</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+
+<body>
+<h1>{{ page_title }}</h1>
+
+<div class="formContainer">
+    {{ form(product_form) }}
+</div>
+
+
+{% block stylesheets %}
+    <style>
+        .formContainer {
+            margin: 20px;
+            line-height: 2;
+        }
+
+        body {
+            background-color: #FFDEAD;
+        }
+
+        /*Klasy użyte podczas tworzenia formularza w akcji controllera*/
+
+        .addProductButton {
+            background: #4B99AD;
+            padding: 8px 15px 8px 15px;
+            border: none;
+            color: #fff;
+            width: 200px;
+            margin-top: 20px;
+            float: left;
+        }
+
+        .addProductButton:hover,
+        .cancelButton:hover {
+            background: #4691A4;
+            box-shadow: none;
+            -moz-box-shadow: none;
+            -webkit-box-shadow: none;
+        }
+
+        .cancelButton {
+            background: #4B99AD;
+            padding: 8px 15px 8px 15px;
+            border: none;
+            color: #fff;
+            width: 200px;
+            margin-top: 20px;
+            float: left;
+            margin-left: 20px;
+        }
+
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $('.cancelButton').on("click", function () {
+            window.location.href = '/admin/list';
+        })
+    </script>
+{% endblock %}
+
+</body>
+</html>
+

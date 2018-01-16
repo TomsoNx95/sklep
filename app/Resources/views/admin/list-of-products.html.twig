@@ -1,0 +1,124 @@
+<html>
+<head>
+    <title>Lista produktów</title>
+    {#<link href="{{ asset('css/listOfProducts.css') }}" rel="stylesheet"/>#}
+</head>
+
+<body>
+<h1>{{ page_title }}</h1>
+
+<div class="count">
+    Liczba wszystkich produktów w sklepie: {{ pagination.getTotalItemCount }}
+</div>
+
+{#{% if isGranted %}#}
+<div class="linkToNewFormNewProduct">
+    <button class="addProductButton" onclick="window.location.href='/admin/new-product'">Dodaj produkt</button>
+</div>
+{#{% endif %}#}
+
+<table class="productListTable">
+    <tr>
+        <th>Nazwa</th>
+        <th>Cena</th>
+        <th>Opis</th>
+        <th>{{ knp_pagination_sortable(pagination, 'Data dodania produktu', 'p.dateOfAddition') }}</th>
+    </tr>
+    {% for elem in pagination %}
+        <tr>
+            <td> {{ elem.name }} </td>
+            <td> {{ elem.price }} </td>
+            <td> {{ elem.description }} </td>
+            <td> {{ elem.dateOfAddition.date | date("d-m-Y")}} </td>
+        </tr>
+    {% endfor %}
+</table>
+
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
+
+<div class="logout">
+    {% if app.user %}
+        <button class="logoutButton" onclick="window.location.href='{{ logout_path('main') }}'">Wyloguj</button>
+    {% endif %}
+    <button class="backToMain" onclick="window.location.href='/'">Wróć do strony głównej</button>
+</div>
+
+
+{% block stylesheets %}
+    <style>
+        .productListTable {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .productListTable td,
+        .productListTable th {
+            border: 1px solid black;
+            text-align: center;
+            padding: 8px;
+        }
+
+        .productListTable tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        .navigation {
+            padding-top: 25px;
+            margin: 0 auto;
+            width: 10%;
+            font-size: 25px;
+        }
+
+        .count {
+            padding-bottom: 20px;
+        }
+
+        .linkToNewFormNewProduct {
+            float: left;
+            margin-bottom: 20px;
+        }
+
+        .addProductButton {
+            background: #4B99AD;
+            padding: 8px 15px 8px 15px;
+            border: none;
+            color: #fff;
+        }
+
+        .addProductButton:hover {
+            background: #4691A4;
+            box-shadow: none;
+            -moz-box-shadow: none;
+            -webkit-box-shadow: none;
+        }
+
+        .logout {
+            float: right;
+            margin-top: 30px;
+        }
+
+        .logoutButton,
+        .backToMain {
+            background: #4B99AD;
+            padding: 8px 15px 8px 15px;
+            border: none;
+            color: #fff;
+            width: 300px;
+        }
+
+        .logoutButton:hover,
+        .backToMain:hover {
+            background: #4691A4;
+            box-shadow: none;
+            -moz-box-shadow: none;
+            -webkit-box-shadow: none;
+        }
+
+    </style>
+{% endblock %}
+
+</body>
+</html>

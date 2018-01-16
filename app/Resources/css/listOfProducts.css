@@ -1,0 +1,16 @@
+.clientListTable {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.clientListTable td,
+.clientListTable th {
+    border: 1px solid black;
+    text-align: center;
+    padding: 8px;
+}
+
+.clientListTable tr:nth-child(even) {
+    background-color: #dddddd;
+}

@@ -1,0 +1,57 @@
+<html>
+<head>
+    <title>Strona główna</title>
+    {#<link href="{{ asset('css/listOfProducts.css') }}" rel="stylesheet"/>#}
+</head>
+
+<body>
+<h1 class="pageTitle">Witaj w sklepie!</h1>
+
+<div class="buttonsContainer">
+    <button class="button" onclick="window.location.href='/admin/list'">Lista produktów</button>
+    <button class="button" onclick="window.location.href='/admin/new-product'">Dodaj produkt</button>
+</div>
+
+{% block stylesheets %}
+    <style>
+        .pageTitle {
+            margin: 0 auto;
+            width: 18%;
+            color: #fff;
+            font-family: 'Cardo', serif;
+            font-size: 40px;
+            font-weight: normal;
+            font-style: italic;
+            letter-spacing: 0.1em;
+            line-height: 2.2em;
+        }
+
+        body {
+            background-color: #F08080;
+        }
+
+        .buttonsContainer {
+            margin: 0 auto;
+            width: 32%;
+            margin-top: 40px;
+        }
+
+        .button {
+            background: #4B99AD;
+            padding: 8px 15px 8px 15px;
+            border: none;
+            color: #fff;
+            width: 300px;
+        }
+
+        .button:hover {
+            background: #4691A4;
+            box-shadow: none;
+            -moz-box-shadow: none;
+            -webkit-box-shadow: none;
+        }
+    </style>
+{% endblock %}
+
+</body>
+</html>
